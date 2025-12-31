@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact | Parvindar Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --primary:#38bdf8;
+  --primary-dark:#0ea5e9;
+  --dark:#020617;
+  --darker:#01040f;
+  --glass:rgba(255,255,255,0.08);
+  --glass-light:rgba(255,255,255,0.12);
+  --gradient:linear-gradient(135deg, #38bdf8 0%, #3b82f6 100%);
+  --gradient-dark:linear-gradient(135deg, #0ea5e9 0%, #1d4ed8 100%);
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+body{
+  background:var(--dark);
+  color:#fff;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+  background:rgba(2,6,23,0.85);
+  backdrop-filter:blur(15px);
+  z-index:1000;
+  transition:0.4s;
+  border-bottom:1px solid rgba(56,189,248,0.1);
+}
+.logo{
+  font-size:32px;
+  font-weight:800;
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  transition:transform 0.3s;
+}
+.logo:hover{
+  transform:scale(1.05);
+}
+nav a{
+  margin-left:30px;
+  text-decoration:none;
+  color:#fff;
+  position:relative;
+  font-weight:500;
+  transition:color 0.3s;
+}
+nav a:hover{
+  color:var(--primary);
+}
+nav a::after{
+  content:'';
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:2px;
+  background:var(--gradient);
+  transition:0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius:2px;
+}
+nav a:hover::after,
+nav a.active::after{
+  width:100%;
+}
+
+/* HERO */
+.hero{
+  min-height:60vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:160px 20px 100px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:800px;
+  height:800px;
+  background:radial-gradient(circle, rgba(56,189,248,0.15) 0%, rgba(56,189,248,0) 70%);
+  z-index:-1;
+}
+.hero h1{
+  font-size:60px;
+  font-weight:800;
+  margin-bottom:20px;
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:fadeInUp 1s ease;
+}
+.hero p{
+  max-width:700px;
+  margin:0 auto;
+  opacity:0.9;
+  font-size:20px;
+  animation:fadeInUp 1s ease 0.2s both;
+}
+
+/* CONTACT SECTION */
+.contact-section{
+  max-width:1200px;
+  margin:0 auto;
+  padding:80px 20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+}
+
+/* INFO */
+.contact-info{
+  background:var(--glass);
+  padding:50px;
+  border-radius:24px;
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  transition:transform 0.4s, box-shadow 0.4s;
+}
+.contact-info:hover{
+  transform:translateY(-10px);
+  box-shadow:0 30px 60px rgba(0,0,0,0.4);
+}
+.contact-info h2{
+  color:var(--primary);
+  margin-bottom:25px;
+  font-size:32px;
+  position:relative;
+  display:inline-block;
+}
+.contact-info h2::after{
+  content:'';
+  position:absolute;
+  bottom:-10px;
+  left:0;
+  width:60px;
+  height:4px;
+  background:var(--gradient);
+  border-radius:2px;
+}
+.contact-info p{
+  opacity:0.85;
+  margin-bottom:30px;
+  font-size:18px;
+  line-height:1.7;
+}
+.contact-details{
+  margin-top:30px;
+}
+.contact-item{
+  display:flex;
+  align-items:center;
+  margin:20px 0;
+  padding:15px;
+  background:rgba(255,255,255,0.03);
+  border-radius:12px;
+  transition:transform 0.3s, background 0.3s;
+}
+.contact-item:hover{
+  transform:translateX(10px);
+  background:rgba(56,189,248,0.08);
+}
+.contact-icon{
+  width:50px;
+  height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--gradient);
+  border-radius:12px;
+  margin-right:20px;
+  font-size:22px;
+}
+.contact-text h4{
+  font-size:18px;
+  margin-bottom:5px;
+  color:var(--primary);
+}
+.contact-text p{
+  margin:0;
+  opacity:0.9;
+  font-size:16px;
+}
+
+/* FORM */
+.contact-form{
+  background:var(--glass-light);
+  padding:50px;
+  border-radius:24px;
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+.contact-form h2{
+  margin-bottom:25px;
+  font-size:32px;
+  color:var(--primary);
+  position:relative;
+  display:inline-block;
+}
+.contact-form h2::after{
+  content:'';
+  position:absolute;
+  bottom:-10px;
+  left:0;
+  width:60px;
+  height:4px;
+  background:var(--gradient);
+  border-radius:2px;
+}
+.input-group{
+  position:relative;
+  margin-bottom:25px;
+}
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:18px 20px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.1);
+  outline:none;
+  background:rgba(2,6,23,0.7);
+  color:#fff;
+  font-size:16px;
+  transition:all 0.3s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(56,189,248,0.2);
+}
+.contact-form textarea{
+  resize:none;
+  height:150px;
+}
+.contact-form button{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:12px;
+  background:var(--gradient);
+  font-size:18px;
+  font-weight:600;
+  cursor:pointer;
+  color:white;
+  transition:all 0.4s;
+  position:relative;
+  overflow:hidden;
+}
+.contact-form button::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:var(--gradient-dark);
+  transition:left 0.5s;
+}
+.contact-form button:hover::before{
+  left:0;
+}
+.contact-form button span{
+  position:relative;
+  z-index:1;
+}
+.contact-form button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(56,189,248,0.3);
+}
+
+/* MAP */
+.map{
+  max-width:1200px;
+  margin:0 auto 80px;
+  padding:0 20px;
+}
+.map h2{
+  text-align:center;
+  margin-bottom:30px;
+  font-size:32px;
+  color:var(--primary);
+}
+.map-container{
+  position:relative;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,0.3);
+  border:1px solid rgba(255,255,255,0.05);
+}
+.map iframe{
+  width:100%;
+  height:400px;
+  border:none;
+  display:block;
+}
+.map-overlay{
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  background:rgba(2,6,23,0.8);
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.map-overlay p{
+  font-size:18px;
+  display:flex;
+  align-items:center;
+}
+.map-overlay i{
+  margin-right:10px;
+  color:var(--primary);
+}
+
+/* FOOTER */
+footer{
+  background:var(--darker);
+  color:#fff;
+  padding:80px 20px 30px;
+  font-size:16px;
+  border-top:1px solid rgba(56,189,248,0.1);
+}
+.footer-container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:40px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.footer-logo h2{
+  font-size:32px;
+  font-weight:800;
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.footer-logo p{
+  margin-top:15px;
+  opacity:0.8;
+  max-width:300px;
+  line-height:1.7;
+}
+.footer-links h3,
+.footer-social h3{
+  margin-bottom:20px;
+  color:var(--primary);
+  font-size:22px;
+}
+.footer-links ul{
+  list-style:none;
+}
+.footer-links li{
+  margin:12px 0;
+}
+.footer-links a{
+  color:#fff;
+  text-decoration:none;
+  transition:all 0.3s;
+  display:inline-block;
+}
+.footer-links a:hover{
+  color:var(--primary);
+  transform:translateX(5px);
+}
+.social-icons{
+  display:flex;
+  gap:15px;
+}
+.social-icons a{
+  width:50px;
+  height:50px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--glass);
+  font-size:22px;
+  text-decoration:none;
+  color:#fff;
+  transition:all 0.3s;
+}
+.social-icons a:hover{
+  background:var(--gradient);
+  color:#000;
+  transform:translateY(-5px);
+}
+.footer-bottom{
+  text-align:center;
+  margin-top:60px;
+  padding-top:30px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  opacity:0.7;
+  font-size:15px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .contact-section{
+    grid-template-columns:1fr;
+    max-width:800px;
+  }
+  .hero h1{
+    font-size:48px;
+  }
+}
+@media(max-width:768px){
+  header{
+    padding:20px 30px;
+    flex-direction:column;
+    gap:15px;
+  }
+  nav a{
+    margin:0 10px;
+  }
+  .hero{
+    padding:200px 20px 80px;
+    min-height:50vh;
+  }
+  .hero h1{
+    font-size:36px;
+  }
+  .hero p{
+    font-size:18px;
+  }
+  .contact-info,
+  .contact-form{
+    padding:30px;
+  }
+  .footer-container{
+    flex-direction:column;
+    text-align:center;
+    align-items:center;
+  }
+  .social-icons{
+    justify-content:center;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* SUCCESS MESSAGE */
+.success-message{
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  padding:40px;
+  border-radius:20px;
+  text-align:center;
+  z-index:2000;
+  border:1px solid rgba(56,189,248,0.3);
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  max-width:500px;
+  width:90%;
+}
+.success-message i{
+  font-size:60px;
+  color:#4ade80;
+  margin-bottom:20px;
+}
+.success-message h3{
+  font-size:28px;
+  margin-bottom:15px;
+  color:var(--primary);
+}
+.success-message p{
+  margin-bottom:25px;
+  opacity:0.9;
+  font-size:18px;
+}
+.success-message button{
+  padding:12px 30px;
+  background:var(--gradient);
+  border:none;
+  border-radius:10px;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.3s;
+}
+.success-message button:hover{
+  transform:scale(1.05);
+}
+.overlay{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+  z-index:1999;
+  backdrop-filter:blur(5px);
+}
+</style>
+</head>
+
+<body>
+
+<header id="header">
+  <div class="logo">Parvindar<span>.</span></div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="clients.html">Clients</a>
+    <a class="active" href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Get In <span>Touch</span></h1>
+    <p>Let's discuss your project and bring your vision to life with modern solutions.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-info">
+    <h2>Contact Information</h2>
+    <p style="font-size: 20px;">I'm available for freelance projects, remote positions, and collaborative opportunities. Let's create something amazing together!</p>
+    
+    <div class="contact-details">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="contact-text">
+          <h4>Name</h4>
+          <p>Parvindar Jambra</p>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="contact-text">
+          <h4>Email</h4>
+          <p>parvindar@email.com</p>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div class="contact-text">
+          <h4>Phone</h4>
+          <p>+92 300 0000000</p>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        <div class="contact-text">
+          <h4>Location</h4>
+          <p>Umerkot, Sindh, Pakistan</p>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="contact-text">
+          <h4>Availability</h4>
+          <p>Freelance, Remote & Full-time Positions</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <h2>Send Message</h2>
+    <form id="messageForm">
+      <div class="input-group">
+        <input type="text" placeholder="Your Name" required id="name">
+      </div>
+      
+      <div class="input-group">
+        <input type="email" placeholder="Your Email" required id="email">
+      </div>
+      
+      <div class="input-group">
+        <input type="text" placeholder="Subject" id="subject">
+      </div>
+      
+      <div class="input-group">
+        <textarea placeholder="Your Message" id="message"></textarea>
+      </div>
+      
+      <button type="submit"><span>Send Message</span></button>
+    </form>
+  </div>
+</section>
+
+<div class="map">
+  <h2>My Location</h2>
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.947068137443!2d69.73611337534112!3d25.361668777722625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39490b5e0b8e84b5%3A0x44a6777a2e7a3b5f!2sUmerkot%2C%20Sindh%2C%20Pakistan!5e0!3m2!1sen!2s!4v1710345678901!5m2!1sen!2s"
+      width="100%"
+      height="400"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <div class="map-overlay">
+      <p><i class="fas fa-map-marker-alt"></i> Umerkot, Sindh, Pakistan</p>
+      <p><i class="fas fa-clock"></i> Available: Mon - Fri, 9 AM - 6 PM</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2>Parvindar<span>.</span></h2>
+      <p>Creating premium digital experiences with modern UI/UX, animations, and cutting-edge web technologies.</p>
+    </div>
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="services.html">My Services</a></li>
+        <li><a href="clients.html">Client Work</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <h3>Follow Me</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-dribbble"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Parvindar Portfolio | All Rights Reserved | Designed with <i class="fas fa-heart" style="color:#f43f5e;"></i>
+  </div>
+</footer>
+
+<!-- Success Message Modal -->
+<div class="overlay" id="overlay"></div>
+<div class="success-message" id="successMessage">
+  <i class="fas fa-check-circle"></i>
+  <h3>Message Sent Successfully!</h3>
+  <p>Thank you for reaching out. I'll get back to you within 24 hours.</p>
+  <button id="closeSuccess">Continue</button>
+</div>
+
+<script>
+// Header scroll effect
+window.addEventListener("scroll",()=>{
+  const header = document.getElementById("header");
+  if(window.scrollY > 60){
+    header.style.background = "rgba(2,6,23,0.95)";
+    header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)";
+  } else {
+    header.style.background = "rgba(2,6,23,0.85)";
+    header.style.boxShadow = "none";
+  }
+});
+
+// Form submission
+const form = document.getElementById('messageForm');
+const successMessage = document.getElementById('successMessage');
+const overlay = document.getElementById('overlay');
+const closeSuccess = document.getElementById('closeSuccess');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value;
+  
+  // In a real application, you would send this data to a server
+  // For this example, we'll just show the success message
+  
+  // Simulate sending data
+  setTimeout(() => {
+    // Show success message
+    successMessage.style.display = 'block';
+    overlay.style.display = 'block';
+    
+    // Reset form
+    form.reset();
+  }, 800);
+});
+
+// Close success message
+closeSuccess.addEventListener('click', function() {
+  successMessage.style.display = 'none';
+  overlay.style.display = 'none';
+});
+
+// Close success message when clicking overlay
+overlay.addEventListener('click', function() {
+  successMessage.style.display = 'none';
+  overlay.style.display = 'none';
+});
+
+// Add hover effect to contact items
+const contactItems = document.querySelectorAll('.contact-item');
+contactItems.forEach(item => {
+  item.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateX(10px)';
+  });
+  
+  item.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateX(0)';
+  });
+});
+
+// Add floating animation to hero section
+window.addEventListener('load', () => {
+  const hero = document.querySelector('.hero');
+  hero.style.animation = 'fadeInUp 1s ease';
+  
+  // Animate contact items sequentially
+  contactItems.forEach((item, index) => {
+    item.style.animation = `fadeInUp 0.5s ease ${index * 0.1 + 0.5}s both`;
+  });
+});
+</script>
+
+</body>
+</html>

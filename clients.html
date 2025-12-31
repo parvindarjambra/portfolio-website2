@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Client Overview | Parvindar Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #38bdf8;
+  --primary-dark: #0ea5e9;
+  --secondary: #22c55e;
+  --dark: #0f172a;
+  --darker: #020617;
+  --light: #e5e7eb;
+  --gray: #94a3b8;
+  --card-bg: rgba(15, 23, 42, 0.8);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--dark);
+  color: var(--light);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(2, 6, 23, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+  transition: var(--transition);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+}
+
+.logo span {
+  color: var(--secondary);
+  margin-left: 4px;
+}
+
+.logo:before {
+  content: "</>";
+  margin-right: 10px;
+  font-size: 22px;
+  color: var(--primary);
+}
+
+nav a {
+  color: #cbd5f5;
+  text-decoration: none;
+  margin-left: 30px;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+  transition: var(--transition);
+}
+
+nav a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: var(--primary);
+  transition: var(--transition);
+}
+
+nav a:hover:after,
+nav a.active:after {
+  width: 100%;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--primary);
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ===== HERO ===== */
+.hero {
+  height: 75vh;
+  background: 
+    linear-gradient(135deg, rgba(2, 6, 23, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%),
+    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80") center/cover fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #38bdf8, #22c55e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--gray);
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+}
+
+/* ===== CLIENT LOGOS ===== */
+.clients-logos {
+  padding: 100px 60px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: var(--light);
+  position: relative;
+  display: inline-block;
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  bottom: -10px;
+  left: 20%;
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  color: var(--gray);
+  font-size: 1.1rem;
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.logo-card {
+  background: var(--card-bg);
+  padding: 40px 20px;
+  border-radius: 16px;
+  transition: var(--transition);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+  transition: 0.5s;
+}
+
+.logo-card:hover:before {
+  left: 100%;
+}
+
+.logo-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.logo-card img {
+  width: 100%;
+  max-height: 60px;
+  object-fit: contain;
+  filter: grayscale(1) brightness(2);
+  transition: var(--transition);
+}
+
+.logo-card:hover img {
+  filter: grayscale(0) brightness(1);
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  padding: 100px 60px;
+  background: var(--darker);
+  position: relative;
+}
+
+.testimonials:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.testimonial-card {
+  background: var(--card-bg);
+  padding: 35px;
+  border-radius: 16px;
+  transition: var(--transition);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-card:before {
+  content: "“";
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  font-size: 4rem;
+  color: var(--primary);
+  opacity: 0.2;
+  font-family: serif;
+}
+
+.testimonial-card p {
+  color: #cbd5f5;
+  margin-bottom: 25px;
+  font-style: italic;
+  position: relative;
+  z-index: 2;
+  line-height: 1.8;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.author-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.author-info h4 {
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.author-info p {
+  color: var(--gray);
+  font-size: 0.9rem;
+  font-style: normal;
+  margin-bottom: 0;
+}
+
+/* ===== COUNTERS ===== */
+.counters {
+  padding: 100px 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: center;
+}
+
+.counter {
+  background: var(--card-bg);
+  padding: 50px 20px;
+  border-radius: 18px;
+  transition: var(--transition);
+  border: 1px solid rgba(56, 189, 248, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.counter:hover {
+  transform: translateY(-5px);
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.counter-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.counter h2 {
+  font-size: 3.5rem;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+
+.counter p {
+  color: var(--gray);
+  font-size: 1.1rem;
+}
+
+.counter:after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.05);
+  top: -50px;
+  right: -50px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--darker);
+  padding: 70px 60px 20px;
+  margin-top: 60px;
+  border-top: 1px solid rgba(56, 189, 248, 0.1);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.footer-box h3 {
+  margin-bottom: 25px;
+  color: var(--primary);
+  font-size: 1.5rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-box h3:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background: var(--primary);
+  bottom: 0;
+  left: 0;
+}
+
+.footer-box p,
+.footer-box a {
+  color: var(--gray);
+  font-size: 1rem;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 12px;
+  transition: var(--transition);
+}
+
+.footer-box a:hover {
+  color: var(--primary);
+  transform: translateX(5px);
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.socials a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--light);
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.socials a:hover {
+  background: var(--primary);
+  transform: translateY(-5px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid rgba(100, 116, 139, 0.2);
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  header {
+    padding: 20px 40px;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+  }
+  
+  .clients-logos,
+  .testimonials,
+  .counters,
+  footer {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--darker);
+    flex-direction: column;
+    padding: 20px;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: var(--transition);
+    display: flex;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+  
+  nav.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  nav a {
+    margin: 15px 0;
+    font-size: 1.1rem;
+  }
+  
+  .hero {
+    height: 65vh;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .clients-logos,
+  .testimonials,
+  .counters,
+  footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .logo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .counters {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Parvindar<span>.</span></div>
+  <div class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a class="active" href="clients.html">Clients</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content fade-in">
+    <h1>Trusted by World-Class Companies</h1>
+    <p>Building lasting partnerships with startups, businesses and entrepreneurs worldwide through exceptional design and development</p>
+    <a href="#clients" class="cta-button">Explore Our Clients</a>
+  </div>
+</section>
+
+<section class="clients-logos" id="clients">
+  <h2 class="section-title fade-in">Brands I've Worked With</h2>
+  <p class="section-subtitle fade-in delay-1">From global tech giants to innovative startups, I've helped businesses transform their digital presence</p>
+  
+  <div class="logo-grid">
+    <div class="logo-card fade-in delay-1">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+    </div>
+    <div class="logo-card fade-in delay-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+    </div>
+    <div class="logo-card fade-in delay-1">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM">
+    </div>
+    <div class="logo-card fade-in delay-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+    </div>
+    <div class="logo-card fade-in delay-1">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
+    </div>
+   
+  </div>
+</section>
+
+<section class="testimonials">
+  <h2 class="section-title fade-in">Client Feedback</h2>
+  <p class="section-subtitle fade-in delay-1">Don't just take our word for it - here's what our clients say</p>
+  
+  <div class="testimonial-grid">
+    <div class="testimonial-card fade-in">
+      <p>"Parvindar delivered outstanding design work that exceeded our expectations. The attention to detail and professionalism was exceptional. Highly recommended!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">JD</div>
+        <div class="author-info">
+          <h4>John Doe</h4>
+          <p>CEO, TechVision Inc.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="testimonial-card fade-in delay-1">
+      <p>"The modern UI and smooth animations transformed our user experience. Our conversion rates increased by 40% after implementing Parvindar's designs."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">SL</div>
+        <div class="author-info">
+          <h4>Sarah Lee</h4>
+          <p>Product Manager, InnovateCo</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="testimonial-card fade-in delay-2">
+      <p>"Best Fiverr experience I've had. Communication was excellent, deadlines were met, and the final product was perfect for our needs. Will definitely work together again!"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">MS</div>
+        <div class="author-info">
+          <h4>Mark Smith</h4>
+          <p>Founder, StartupGrid</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="counters">
+  <div class="counter fade-in">
+    <div class="counter-icon">
+      <i class="fas fa-rocket"></i>
+    </div>
+    <h2 class="counter-value" data-target="150">0</h2>
+    <p>Projects Completed</p>
+  </div>
+  
+  <div class="counter fade-in delay-1">
+    <div class="counter-icon">
+      <i class="fas fa-smile"></i>
+    </div>
+    <h2 class="counter-value" data-target="120">0</h2>
+    <p>Happy Clients</p>
+  </div>
+  
+  <div class="counter fade-in delay-2">
+    <div class="counter-icon">
+      <i class="fas fa-star"></i>
+    </div>
+    <h2 class="counter-value" data-target="65">0</h2>
+    <p>5-Star Reviews</p>
+  </div>
+  
+  <div class="counter fade-in delay-3">
+    <div class="counter-icon">
+      <i class="fas fa-award"></i>
+    </div>
+    <h2 class="counter-value" data-target="8">0</h2>
+    <p>Awards Won</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-box fade-in">
+      <h3>Parvindar Portfolio</h3>
+      <p>Creating modern, responsive websites and UI designs that convert visitors into loyal clients. Let's build something amazing together.</p>
+      <div class="socials">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-dribbble"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-box fade-in delay-1">
+      <h3>Quick Links</h3>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="services.html">My Services</a>
+      <a href="clients.html">Client Portfolio</a>
+      <a href="contact.html">Get In Touch</a>
+    </div>
+
+    <div class="footer-box fade-in delay-2">
+      <h3>Contact Info</h3>
+      <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Design Street, Creative City</p>
+      <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> hello@parvindar.com</p>
+      <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +1 (123) 456-7890</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2025 Parvindar | Premium Portfolio | All Rights Reserved
+  </div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const mainNav = document.getElementById('mainNav');
+
+menuToggle.addEventListener('click', () => {
+  mainNav.classList.toggle('active');
+  menuToggle.innerHTML = mainNav.classList.contains('active') 
+    ? '<i class="fas fa-times"></i>' 
+    : '<i class="fas fa-bars"></i>';
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    mainNav.classList.remove('active');
+    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+  });
+});
+
+// Animated counters
+function animateCounter(counter) {
+  const target = +counter.getAttribute('data-target');
+  const count = +counter.innerText;
+  const increment = target / 100;
+  
+  if (count < target) {
+    counter.innerText = Math.ceil(count + increment);
+    setTimeout(() => animateCounter(counter), 20);
+  } else {
+    counter.innerText = target + '+';
+  }
+}
+
+// Intersection Observer for counters
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const counters = document.querySelectorAll('.counter-value');
+      counters.forEach(counter => {
+        animateCounter(counter);
+      });
+      counterObserver.disconnect();
+    }
+  });
+}, { threshold: 0.5 });
+
+counterObserver.observe(document.querySelector('.counters'));
+
+// Fade-in animation on scroll
+const fadeElements = document.querySelectorAll('.fade-in');
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+fadeElements.forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+  fadeObserver.observe(el);
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>

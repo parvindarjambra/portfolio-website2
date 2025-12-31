@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Parvindar | Premium Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --primary:#38bdf8;
+  --primary-light:#7dd3fc;
+  --secondary:#f472b6;
+  --dark:#020617;
+  --darker:#0f172a;
+  --light:#f8fafc;
+  --glass:rgba(255,255,255,0.08);
+  --glass-light:rgba(255,255,255,0.12);
+}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+html{
+  scroll-behavior:smooth;
+}
+body{
+  background:var(--dark);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* LOADER */
+.loader{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:var(--dark);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  transition:opacity 0.5s, visibility 0.5s;
+}
+.loader.hidden{
+  opacity:0;
+  visibility:hidden;
+}
+.loader-circle{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  border:5px solid transparent;
+  border-top-color:var(--primary);
+  border-right-color:var(--primary);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+  background:rgba(2,6,23,0.85);
+  backdrop-filter:blur(15px);
+  z-index:1000;
+  transition:0.5s;
+  border-bottom:1px solid rgba(56, 189, 248, 0.1);
+}
+.scrolled{
+  padding:15px 60px;
+  background:rgba(2,6,23,0.95);
+  box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+.logo{
+  font-size:32px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.logo span{color:var(--primary);}
+.logo i{
+  color:var(--primary);
+  font-size:28px;
+}
+nav a{
+  margin-left:35px;
+  text-decoration:none;
+  color:#fff;
+  position:relative;
+  font-weight:500;
+  transition:0.3s;
+}
+nav a:hover{
+  color:var(--primary);
+}
+nav a::after{
+  content:'';
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0;
+  height:2px;
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  transition:0.4s;
+}
+nav a:hover::after,
+nav a.active::after{
+  width:100%;
+}
+.menu-toggle{
+  display:none;
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:140px 20px 80px;
+  background:
+  radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+  radial-gradient(circle at 80% 20%, rgba(244, 114, 182, 0.1) 0%, transparent 50%),
+  linear-gradient(180deg, rgba(2,6,23,0.95) 0%, rgba(15,23,42,0.9) 100%),
+  url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-content{
+  max-width:1000px;
+  z-index:1;
+}
+.hero h1{
+  font-size:clamp(2.5rem, 5vw, 4.5rem);
+  line-height:1.1;
+  margin-bottom:20px;
+  text-shadow:0 5px 15px rgba(0,0,0,0.5);
+}
+.hero h1 span{
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  display:inline-block;
+}
+.typing{
+  min-height:60px;
+  display:inline-block;
+}
+.hero p{
+  margin:25px auto;
+  font-size:clamp(1rem, 2vw, 1.3rem);
+  opacity:0.9;
+  max-width:700px;
+  line-height:1.6;
+}
+.hero-btns{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.btn{
+  padding:18px 45px;
+  border-radius:50px;
+  font-size:17px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+  border:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  position:relative;
+  overflow:hidden;
+}
+.btn::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition:0.5s;
+}
+.btn:hover::before{
+  left:100%;
+}
+.btn-primary{
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  color:#000;
+}
+.btn-primary:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 30px rgba(56, 189, 248, 0.3);
+}
+.btn-outline{
+  background:none;
+  border:2px solid var(--primary);
+  color:var(--primary);
+}
+.btn-outline:hover{
+  background:var(--primary);
+  color:#000;
+  transform:translateY(-5px);
+  box-shadow:0 15px 30px rgba(56, 189, 248, 0.2);
+}
+
+/* STATS */
+.stats{
+  display:flex;
+  justify-content:center;
+  gap:60px;
+  margin-top:70px;
+  flex-wrap:wrap;
+}
+.stat{
+  background:var(--glass);
+  padding:25px 35px;
+  border-radius:20px;
+  min-width:180px;
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.05);
+  transition:0.4s;
+}
+.stat:hover{
+  transform:translateY(-10px);
+  background:var(--glass-light);
+  box-shadow:0 15px 30px rgba(56, 189, 248, 0.15);
+}
+.stat h2{
+  font-size:48px;
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  transition:0.3s;
+}
+.stat span{
+  display:block;
+  margin-top:8px;
+  font-size:16px;
+  opacity:0.8;
+  letter-spacing:1px;
+}
+
+/* SHOWCASE */
+.showcase{
+  padding:100px 20px;
+  text-align:center;
+  background:var(--darker);
+  position:relative;
+  overflow:hidden;
+}
+.showcase::before{
+  content:'';
+  position:absolute;
+  top:-100px;
+  right:-100px;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+}
+.showcase h2{
+  font-size:42px;
+  margin-bottom:15px;
+  position:relative;
+  display:inline-block;
+}
+.showcase h2::after{
+  content:'';
+  position:absolute;
+  bottom:-10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80px;
+  height:4px;
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius:2px;
+}
+.showcase > p{
+  max-width:700px;
+  margin:0 auto 60px;
+  font-size:18px;
+  opacity:0.8;
+  line-height:1.6;
+}
+.cards{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+  max-width:1400px;
+  margin:0 auto;
+}
+.card{
+  background:var(--glass);
+  border-radius:25px;
+  overflow:hidden;
+  width:350px;
+  transition:0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.05);
+  position:relative;
+}
+.card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(45deg, transparent, rgba(56, 189, 248, 0.05), transparent);
+  z-index:0;
+}
+.card:hover{
+  transform:translateY(-20px);
+  box-shadow:0 25px 50px rgba(0,0,0,0.4);
+}
+.card-img{
+  width:100%;
+  height:240px;
+  overflow:hidden;
+  position:relative;
+}
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:0.6s;
+}
+.card:hover img{
+  transform:scale(1.1);
+}
+.card-content{
+  padding:25px;
+  position:relative;
+  z-index:1;
+}
+.card h3{
+  font-size:24px;
+  margin-bottom:15px;
+  transition:0.3s;
+}
+.card:hover h3{
+  color:var(--primary);
+}
+.card p{
+  opacity:0.8;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+.card-tags{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.tag{
+  background:rgba(56, 189, 248, 0.1);
+  color:var(--primary-light);
+  padding:5px 15px;
+  border-radius:20px;
+  font-size:14px;
+}
+
+/* SKILLS */
+.skills{
+  padding:100px 20px;
+  background:var(--dark);
+  text-align:center;
+}
+.skills h2{
+  font-size:42px;
+  margin-bottom:60px;
+  position:relative;
+  display:inline-block;
+}
+.skills h2::after{
+  content:'';
+  position:absolute;
+  bottom:-10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:80px;
+  height:4px;
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius:2px;
+}
+.skills-container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.skill{
+  background:var(--glass);
+  padding:30px;
+  border-radius:20px;
+  width:250px;
+  transition:0.4s;
+  border:1px solid rgba(255,255,255,0.05);
+}
+.skill:hover{
+  transform:translateY(-10px);
+  box-shadow:0 15px 30px rgba(56, 189, 248, 0.1);
+}
+.skill i{
+  font-size:50px;
+  margin-bottom:20px;
+  color:var(--primary);
+}
+.skill h3{
+  font-size:22px;
+  margin-bottom:15px;
+}
+.skill p{
+  opacity:0.8;
+  line-height:1.6;
+}
+
+/* CTA */
+.cta{
+  padding:100px 20px;
+  text-align:center;
+  background:linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(244, 114, 182, 0.1));
+  border-radius:30px;
+  margin:50px 20px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.3);
+  position:relative;
+  overflow:hidden;
+}
+.cta::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-content{
+  position:relative;
+  z-index:1;
+}
+.cta h2{
+  font-size:clamp(2rem, 4vw, 3.5rem);
+  margin-bottom:20px;
+  text-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+.cta p{
+  margin-bottom:35px;
+  font-size:18px;
+  max-width:700px;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.6;
+}
+.cta .btn{
+  margin:0 auto;
+}
+
+/* FOOTER */
+footer{
+  background:#0a0f1a;
+  color:#fff;
+  padding:80px 20px 20px;
+  font-size:14px;
+  position:relative;
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+.footer-container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:50px;
+  max-width:1200px;
+  margin:0 auto;
+}
+.footer-logo h2{
+  font-size:32px;
+  font-weight:700;
+  margin-bottom:15px;
+}
+.footer-logo h2 span{
+  color:var(--primary);
+}
+.footer-logo p{
+  margin-top:10px;
+  opacity:0.8;
+  max-width:300px;
+  line-height:1.6;
+}
+.footer-links h3,
+.footer-social h3{
+  margin-bottom:20px;
+  font-size:20px;
+  color:var(--primary);
+}
+.footer-links ul{
+  list-style:none;
+}
+.footer-links ul li{
+  margin:12px 0;
+}
+.footer-links ul li a{
+  color:#fff;
+  text-decoration:none;
+  transition:0.3s;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.footer-links ul li a i{
+  font-size:12px;
+  color:var(--primary);
+  transition:0.3s;
+}
+.footer-links ul li a:hover{
+  color:var(--primary);
+}
+.footer-links ul li a:hover i{
+  transform:translateX(5px);
+}
+.footer-social .social-icons{
+  display:flex;
+  gap:15px;
+  margin-top:10px;
+}
+.footer-social .social-icons a{
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:50px;
+  height:50px;
+  background:var(--glass);
+  border-radius:50%;
+  color:#fff;
+  text-decoration:none;
+  transition:0.4s;
+}
+.footer-social .social-icons a:hover{
+  background:linear-gradient(90deg, var(--primary), var(--secondary));
+  color:#000;
+  transform:translateY(-5px);
+}
+.footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,0.1);
+  padding-top:25px;
+  margin-top:60px;
+  opacity:0.7;
+  font-size:14px;
+}
+
+/* FLOATING ELEMENTS */
+.floating{
+  position:absolute;
+  width:50px;
+  height:50px;
+  background:radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, transparent 70%);
+  border-radius:50%;
+  z-index:0;
+}
+.floating-1{
+  top:20%;
+  left:5%;
+  animation:float 15s infinite ease-in-out;
+}
+.floating-2{
+  top:60%;
+  right:10%;
+  animation:float 20s infinite ease-in-out reverse;
+}
+.floating-3{
+  bottom:20%;
+  left:15%;
+  animation:float 18s infinite ease-in-out;
+}
+@keyframes float{
+  0%, 100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-30px) rotate(180deg);}
+}
+
+/* Responsive */
+@media(max-width:1100px){
+  .cards, .skills-container{
+    gap:25px;
+  }
+  .card, .skill{
+    width:calc(50% - 25px);
+    max-width:100%;
+  }
+}
+@media(max-width:900px){
+  header{
+    padding:20px 30px;
+  }
+  nav{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:280px;
+    height:100vh;
+    background:rgba(2,6,23,0.95);
+    backdrop-filter:blur(15px);
+    display:flex;
+    flex-direction:column;
+    padding:100px 30px;
+    transition:0.5s;
+    z-index:999;
+    border-left:1px solid rgba(56, 189, 248, 0.1);
+  }
+  nav.active{
+    right:0;
+  }
+  nav a{
+    margin:15px 0;
+    font-size:18px;
+  }
+  .menu-toggle{
+    display:block;
+    z-index:1000;
+  }
+  .hero{
+    padding:120px 20px 60px;
+  }
+  .stats{
+    gap:30px;
+  }
+  .stat{
+    min-width:150px;
+    padding:20px 25px;
+  }
+  .footer-container{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+}
+@media(max-width:768px){
+  .card, .skill{
+    width:100%;
+    max-width:400px;
+  }
+  .hero-btns{
+    flex-direction:column;
+    align-items:center;
+  }
+  .btn{
+    width:100%;
+    max-width:300px;
+  }
+  .stats{
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+  }
+  .stat{
+    width:100%;
+    max-width:300px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-circle"></div>
+</div>
+
+<!-- FLOATING ELEMENTS -->
+<div class="floating floating-1"></div>
+<div class="floating floating-2"></div>
+<div class="floating floating-3"></div>
+
+<header id="header">
+  <div class="logo"><i class="fas fa-code"></i>Parvindar<span>.</span></div>
+  <div class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+  </div>
+  <nav id="nav">
+    <a class="active" href="#"><i class="fas fa-home"></i> Home</a>
+    <a href="about.html"><i class="fas fa-user"></i> About</a>
+    <a href="services.html"><i class="fas fa-cogs"></i> Services</a>
+    <a href="clients.html"><i class="fas fa-briefcase"></i> Work</a>
+    <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>I Design <span class="typing"></span><br>Premium Experiences</h1>
+    <p>High-end UI/UX Design • Modern Animations • Clean Code • Client-focused Solutions • 4+ Years Experience</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary"><i class="fas fa-eye"></i> View My Work</button>
+      <button class="btn btn-outline"><i class="fas fa-paper-plane"></i> Hire Me Now</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><h2 data-count="120">0</h2><span>Projects Delivered</span></div>
+      <div class="stat"><h2 data-count="85">0</h2><span>Satisfied Clients</span></div>
+      <div class="stat"><h2 data-count="4">0</h2><span>Years Experience</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="showcase" id="work">
+  <h2>Featured Work</h2>
+  <p>Check out some of my recent projects that showcase my design and development skills.</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Business Website">
+      </div>
+      <div class="card-content">
+        <h3>Business Website</h3>
+        <p>A responsive corporate website with modern design, interactive elements, and SEO optimization.</p>
+        <div class="card-tags">
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Responsive</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Portfolio Design">
+      </div>
+      <div class="card-content">
+        <h3>Portfolio Design</h3>
+        <p>Creative portfolio with smooth animations, dark theme, and interactive project showcase.</p>
+        <div class="card-tags">
+          <span class="tag">UI/UX</span>
+          <span class="tag">Animation</span>
+          <span class="tag">Creative</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Landing Page">
+      </div>
+      <div class="card-content">
+        <h3>Landing Page</h3>
+        <p>High-conversion landing page with compelling design, clear CTAs, and performance optimization.</p>
+        <div class="card-tags">
+          <span class="tag">Landing Page</span>
+          <span class="tag">Conversion</span>
+          <span class="tag">Optimized</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <h2>My Skills</h2>
+  <div class="skills-container">
+    <div class="skill">
+      <i class="fas fa-paint-brush"></i>
+      <h3>UI/UX Design</h3>
+      <p>Creating intuitive and beautiful user interfaces with modern design principles.</p>
+    </div>
+    <div class="skill">
+      <i class="fas fa-code"></i>
+      <h3>Frontend Development</h3>
+      <p>Building responsive, interactive websites with clean, maintainable code.</p>
+    </div>
+    <div class="skill">
+      <i class="fas fa-mobile-alt"></i>
+      <h3>Responsive Design</h3>
+      <p>Ensuring perfect experience across all devices and screen sizes.</p>
+    </div>
+    <div class="skill">
+      <i class="fas fa-bolt"></i>
+      <h3>Performance</h3>
+      <p>Optimizing websites for speed, SEO, and optimal user experience.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="cta-content">
+    <h2>Ready to Work Together?</h2>
+    <p>Let's build something powerful, professional, and visually stunning that will elevate your brand and engage your audience.</p>
+    <button class="btn btn-primary"><i class="fas fa-paper-plane"></i> Contact Me Now</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-logo">
+      <h2><i class="fas fa-code"></i> Parvindar<span>.</span></h2>
+      <p>Building premium websites with modern design, animations, and clean code. Transforming ideas into digital experiences.</p>
+    </div>
+
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About</a></li>
+        <li><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a></li>
+        <li><a href="clients.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h3>Follow Me</h3>
+      <div class="social-icons">
+        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Parvindar | Premium Portfolio. All rights reserved. | Designed with <i class="fas fa-heart" style="color:#f472b6;"></i> & <i class="fas fa-coffee" style="color:#8b5cf6;"></i></p>
+  </div>
+</footer>
+
+<script>
+// LOADER
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  setTimeout(() => {
+    loader.classList.add("hidden");
+  }, 1000);
+});
+
+// HEADER SCROLL EFFECT
+window.addEventListener("scroll", () => {
+  const header = document.getElementById("header");
+  if (window.scrollY > 60) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
+
+// MOBILE MENU TOGGLE
+const menuToggle = document.getElementById("menuToggle");
+const nav = document.getElementById("nav");
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
+  menuToggle.innerHTML = nav.classList.contains("active") 
+    ? '<i class="fas fa-times"></i>' 
+    : '<i class="fas fa-bars"></i>';
+});
+
+// Close mobile menu when clicking a link
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('active');
+    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+  });
+});
+
+// COUNTER ANIMATION
+const counters = document.querySelectorAll("[data-count]");
+const speed = 200;
+
+const startCounter = (counter) => {
+  const target = +counter.getAttribute("data-count");
+  const count = +counter.innerText;
+  const increment = target / speed;
+  
+  if(count < target) {
+    counter.innerText = Math.ceil(count + increment);
+    setTimeout(() => startCounter(counter), 10);
+  } else {
+    counter.innerText = target;
+  }
+};
+
+// Intersection Observer for counters
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      startCounter(entry.target);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+counters.forEach(counter => {
+  observer.observe(counter);
+});
+
+// TYPING EFFECT
+const words = ["Modern", "Interactive", "Professional", "Premium", "Responsive", "Beautiful"];
+let i = 0, j = 0, isDeleting = false;
+const typing = document.querySelector(".typing");
+
+function type() {
+  if(!typing) return;
+  const word = words[i];
+  
+  if(!isDeleting) {
+    typing.textContent = word.substring(0, j + 1);
+    j++;
+    
+    if(j === word.length) {
+      isDeleting = true;
+      setTimeout(type, 1500);
+      return;
+    }
+  } else {
+    typing.textContent = word.substring(0, j - 1);
+    j--;
+    
+    if(j === 0) {
+      isDeleting = false;
+      i = (i + 1) % words.length;
+    }
+  }
+  
+  setTimeout(type, isDeleting ? 50 : 150);
+}
+
+type();
+
+// CARD HOVER EFFECT ENHANCEMENT
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.zIndex = '10';
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.zIndex = '1';
+  });
+});
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    if(targetId === '#') return;
+    
+    const targetElement = document.querySelector(targetId);
+    if(targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// BUTTON CLICK EFFECTS
+document.querySelectorAll('.btn').forEach(button => {
+  button.addEventListener('click', function() {
+    this.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      this.style.transform = '';
+    }, 200);
+    
+    // If it's a contact button, simulate sending
+    if(this.textContent.includes('Contact') || this.textContent.includes('Hire')) {
+      const originalText = this.innerHTML;
+      this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      setTimeout(() => {
+        this.innerHTML = '<i class="fas fa-check"></i> Sent!';
+        setTimeout(() => {
+          this.innerHTML = originalText;
+        }, 2000);
+      }, 1500);
+    }
+  });
+});
+</script>
+</body>
+</html>
